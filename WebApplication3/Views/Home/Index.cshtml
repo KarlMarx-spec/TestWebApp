@@ -1,0 +1,46 @@
+﻿@model List<Domain.Entities.Company>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-left">
+
+
+<h1>Компании с отделами и департаментами</h1>
+    <p></p>
+    @{int cCount = 1;}
+    @foreach (var item in Model)
+    {
+        int dCount = 1;
+        <h2>
+        @cCount.
+        &nbsp;
+        @Html.DisplayFor(modelItem => item.Name)
+        </h2>
+        @foreach (var department in item.Departments!)
+        {
+            <h4>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            @dCount.
+            &nbsp;
+            @Html.DisplayFor(modelItem => department.Name)
+            </h4>
+            int oCount = 1;
+            @foreach (var office in department.Offices!)
+            {
+                <p>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                @oCount.
+                &nbsp;
+                @Html.DisplayFor(modelItem => office.Name)
+                </p>
+                oCount++;
+            }
+            dCount++;
+        }
+        cCount++;
+    }
+    <a href="Export" class="btn btn-primary">Экспорт данных</a>
+</div>

@@ -1,0 +1,37 @@
+﻿@page
+@model WebApplication3.Pages.Companies.DeleteModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+
+<h3>Вы уверены, что хотите удалить компанию?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Company.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a href="/Companies/Index" class="btn btn-primary">Back to List</a>
+    </form>
+</div>
+</body>
+</html>

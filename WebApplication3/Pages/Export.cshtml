@@ -1,0 +1,37 @@
+﻿@page
+@model WebApplication3.Views.Home.ExportModel
+@{
+}
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<body>
+
+<h4>Экспорт данных</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <p>Укажите путь для сохранения файла</p>
+            <div class="form-group">
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="Directory">
+                    </div>
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>

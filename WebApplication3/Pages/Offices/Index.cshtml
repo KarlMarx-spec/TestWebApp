@@ -1,0 +1,42 @@
+﻿@page
+@model WebApplication3.Pages.Offices.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Отделы</h1>
+
+<p>
+    <a href="/Offices/Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Offices[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Offices[0].DepartmentId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Offices) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentId)
+            </td>
+            <td>
+                    <a href="/Offices/Edit?id=@item.Id" class="btn btn-primary">Edit</a> |
+                    <a href="/Offices/Delete?id=@item.Id" class="btn btn-primary">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
